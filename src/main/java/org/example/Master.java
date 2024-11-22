@@ -1,14 +1,14 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.Locale;
-
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+public class Master {
     public static void main(String[] args) {
+    }
+}
 
-        //Выводится инфа в консоль
+
+//Выводится инфа в консоль
         /*awdawdawd
         awd
         aw
@@ -59,11 +59,11 @@ public class Main {
 
         for (int i = 2; i < 10; i++){
             System.out.println(i);
-          */
+
         int [] arr = new int [5];
         int [] arr2 = {5, 10, 15, 20, 25};
         for (int i = 0; i <arr2.length; i++)
         System.out.println(Arrays.toString(arr2));
+        System.out.println();
 
-        }
-    }
+         */
