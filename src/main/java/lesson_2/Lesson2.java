@@ -1,67 +1,7 @@
 package lesson_2;
 import java.util.Arrays;
 
-
 public class Lesson2 {
-    public static void main(String[] args) {
-        //1 задание
-        System.out.println("\n1 ЗАДАНИЕ");
-        printThreeWords();
-
-        //2 задание
-        System.out.println("\n2 ЗАДАНИЕ");
-        checkSumSign(3,-4);
-
-        //3 задание
-        System.out.println("\n3 ЗАДАНИЕ");
-        printColor(34);
-
-        //4 задание
-        System.out.println("\n4 ЗАДАНИЕ");
-        compareNumbers(54,54);
-
-        //5 задание
-        System.out.println("\n5 ЗАДАНИЕ");
-        summWithin(9, 3);
-
-        //6 задание
-        System.out.println("\n6 ЗАДАНИЕ");
-        numberPositiveNegative(-1);
-
-        //7 задание
-        System.out.println("\n7 ЗАДАНИЕ");
-        booleanPositiveNegative(-25);
-
-        //8 задание
-        System.out.println("\n8 ЗАДАНИЕ");
-        intString(4, "Печатаю текст а раз");
-
-        //9 задание
-        System.out.println("\n9 ЗАДАНИЕ");
-        leapYear(2024);
-
-        //10 задание
-        System.out.println("\n10 ЗАДАНИЕ");
-        reversedArray();
-
-        //11 задание
-        System.out.println("\n11 ЗАДАНИЕ");
-        oneHundred();
-
-        //12 задание
-        System.out.println("\n12 ЗАДАНИЕ");
-        lessThanSix();
-
-        //13 задание
-        System.out.println("\n13 ЗАДАНИЕ");
-        squareArray(11);
-
-        //14 задание
-        System.out.println("\n14 ЗАДАНИЕ");
-        intValue(6, 15);
-    }
-
-
     /* 1. Создайте метод printThreeWords(), который при вызове должен отпечатать в столбец три слова: Orange, Banana, Apple.*/
     public static void printThreeWords() {
         System.out.println("Orange\nBanana\nApple");
@@ -92,7 +32,7 @@ public class Lesson2 {
     public static void printColor(int value) {
         if (value <= 0) {
             System.out.println("\u001B[31mКрасный\u001B[0m");
-        } else if (value > 0 && value <= 100) {
+        } else if (value <= 100) {
             System.out.println("\u001B[33mЖелтый\u001B[0m");
         } else if (value > 100) {
             System.out.println("\u001B[32mЗеленый\u001B[0m");
@@ -146,7 +86,7 @@ public class Lesson2 {
     целое число. Метод должен вернуть true, если число
     отрицательное, и вернуть false если положительное.
     Замечание: ноль считаем положительным числом.*/
-    public static void booleanPositiveNegative(int a) {
+    public static void isNegative(int a) {
         boolean typeNumber;
         if (a >= 0) {
             typeNumber = true;
