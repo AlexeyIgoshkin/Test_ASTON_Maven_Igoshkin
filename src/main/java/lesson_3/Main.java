@@ -11,10 +11,10 @@ public class Main {
         Employee employee4 = persArray[3];
         Employee employee5 = persArray[4];
 
-        Park.Schedule schedule1 = new Park.Schedule("'Колесо обозрения'", "10:00-21:00", 600);
-        Park.Schedule schedule2 = new Park.Schedule("'Молот'", 1000);
-        Park.Schedule schedule3 = new Park.Schedule("'Трюк'");
-        Park.Schedule schedule4 = new Park.Schedule("'Ромашка'","12:00-20:00");
+        Park.Attraction Attraction1 = new Park.Attraction("'Колесо обозрения'", "10:00-21:00", 600);
+        Park.Attraction Attraction2 = new Park.Attraction("'Молот'", 1000);
+        Park.Attraction Attraction3 = new Park.Attraction("'Трюк'");
+        Park.Attraction Attraction4 = new Park.Attraction("'Ромашка'","12:00-20:00");
 
         System.out.println("\nИНФОРМАЦИЯ О СОТРУДНИКАХ");
         employee1.employeeInfo();
@@ -24,10 +24,10 @@ public class Main {
         employee5.employeeInfo();
 
         System.out.println("\nИНФОРМАЦИЯ ОБ АТТРАКЦИОНАХ");
-        schedule1.scheduleInfo();
-        schedule2.scheduleInfo();
-        schedule3.scheduleInfo();
-        schedule4.scheduleInfo();
+        Attraction1.AttractionInfo();
+        Attraction2.AttractionInfo();
+        Attraction3.AttractionInfo();
+        Attraction4.AttractionInfo();
 
     }
 }

@@ -5,35 +5,35 @@ package lesson_3;
 Создать класс Park с внутренним классом, с помощью объектов которого можно хранить
 информацию об аттракционах, времени их работы и стоимости.*/
 class Park {
-    public static class Schedule {
+    static class Attraction {
         String attraction;
         String runtime;
         int cost;
-        Schedule(String _attraction, String _runtime, int _cost) {
+        Attraction(String _attraction, String _runtime, int _cost) {
             this.attraction = _attraction;
             this.runtime = _runtime;
             this.cost = _cost;
         }
 
         //Доп. конструкторы
-        Schedule(String _attraction, String _runtime) {
+        Attraction (String _attraction, String _runtime) {
             this.attraction = _attraction;
             this.runtime = _runtime;
             this.cost = 0;
         }
-        Schedule(String _attraction, int _cost) {
+        Attraction(String _attraction, int _cost) {
             this.attraction = _attraction;
             this.runtime = "Уточняется";
             this.cost = _cost;
         }
-        Schedule(String _attraction) {
+        Attraction(String _attraction) {
             this.attraction = _attraction;
             this.runtime = "Уточняется";
             this.cost = 0;
         }
 
         //Метод отображения информации
-        public void scheduleInfo() {
+        public void AttractionInfo() {
             System.out.println("Аттракцион: " + attraction);
             System.out.println("Время работы: " + runtime);
             if (cost == 0) {
