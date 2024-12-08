@@ -3,7 +3,6 @@ package lesson_10.ANIMALS;
 public class Animal {
     boolean isFull;
     static int animalCount = 0;
-    int age;
     String name;
 
     public Animal(String _name){

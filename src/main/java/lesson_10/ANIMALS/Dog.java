@@ -18,7 +18,7 @@ public class Dog extends Animal {
             super.run(length);
         } else {
             System.out.println(name + " не может столько бегать :(");
-        };
+        }
     }
 
     @Override
@@ -29,6 +29,6 @@ public class Dog extends Animal {
             super.swim(length);
         } else {
             System.out.println(name + " не может столько плыть :(");
-        };
+        }
     }
 }
