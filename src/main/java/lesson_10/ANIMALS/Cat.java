@@ -1,7 +1,7 @@
 package lesson_10.ANIMALS;
 
 public class Cat extends Animal {
-    static int catCount = 0;
+    private static int catCount = 0;
 
     public Cat(String _name) {
         super(_name);

@@ -1,8 +1,8 @@
 package lesson_10.ANIMALS;
 
 public class Animal {
-    boolean isFull;
-    static int animalCount = 0;
+    private boolean isFull;
+    private static int animalCount = 0;
     String name;
 
     public Animal(String _name){
@@ -43,7 +43,6 @@ public class Animal {
         } else {
             System.out.println(name + " голоден. ");
         }
-
     }
 }
 

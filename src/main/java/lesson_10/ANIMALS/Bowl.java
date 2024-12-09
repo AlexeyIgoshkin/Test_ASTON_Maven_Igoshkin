@@ -1,7 +1,7 @@
 package lesson_10.ANIMALS;
 
 public class Bowl {
-    int bowlFood;
+    private int bowlFood;
     public Bowl(int foodAmount) {
         this.bowlFood = foodAmount;
     }
@@ -29,5 +29,4 @@ public class Bowl {
         }
         System.out.println();
     }
-
 }

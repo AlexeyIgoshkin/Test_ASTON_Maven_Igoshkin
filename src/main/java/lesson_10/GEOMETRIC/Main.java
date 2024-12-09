@@ -1,26 +1,33 @@
 package lesson_10.GEOMETRIC;
-
+//2 ЗАДАНИЕ
 public class Main {
     public static void main(String[] args) {
-        Circle circle1 = new Circle();
-        Square square1 = new Square();
-        Triangle triangle1 = new Triangle();
+
+        // Экземпляры фигур с аргументами
+        Circle circle1 = new Circle(22,"Красный","Оранжевый");
+        Square square1 = new Square(7,"Желтый","Черный");
+        Triangle triangle1 = new Triangle(5,4,5,"Зеленый","Фиолетовый");
+        System.out.println();
+
+        // Вызов переопределенных методов интерфейса
+        // Расчеты в едином методе, цвета в едином методе
+        circle1.mathCalculation();
+        circle1.colors();
 
         System.out.println();
-        System.out.println("КРУГ");
-        circle1.mathCalculation(5);
-        circle1.colors("Красный", "Оранжевый");
+
+        square1.mathCalculation();
+        square1.colors();
 
         System.out.println();
-        System.out.println("КВАДРАТ");
 
-        square1.mathCalculation(5);
-        square1.colors("Желтый", "Черный");
+        triangle1.mathCalculation();
+        triangle1.colors();
 
         System.out.println();
-        System.out.println("ТРЕУГОЛЬНИК");
 
-        triangle1.mathCalculation(2,2,2);
-        triangle1.colors("Зеленый","Фиолетовый");
+        // Реализация квадрата через дефолтные методы интерфейса
+        square1.perimeterSquare();
+        square1.acreageSquare();
     }
 }

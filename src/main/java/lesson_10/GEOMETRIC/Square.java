@@ -1,9 +1,13 @@
 package lesson_10.GEOMETRIC;
 
-public class Square extends GeometricFigure implements SquareInterface {
-
+public class Square extends GeometricFigure implements GeometricInterface {
+    public Square(double _side, String _fillColor, String _borderColor) {
+        this.side = _side;
+        this.fillColor = _fillColor;
+        this.borderColor = _borderColor;
+    }
     @Override
-    public void mathCalculation(double side) {
+    public void mathCalculation() {
         double perimeter = side * 4;
         System.out.println("Периметр квадрата: " + perimeter);
         double acreage = side * side;
@@ -11,7 +15,7 @@ public class Square extends GeometricFigure implements SquareInterface {
     }
 
     @Override
-    public void colors(String fillColor, String borderColor) {
+    public void colors () {
         System.out.println("Цвет заливки: " + fillColor);
         System.out.println("Цвет границы: " + borderColor);
     }
