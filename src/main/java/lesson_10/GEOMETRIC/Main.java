@@ -11,23 +11,36 @@ public class Main {
 
         // Вызов переопределенных методов интерфейса
         // Расчеты в едином методе, цвета в едином методе
-        circle1.mathCalculation();
-        circle1.colors();
+        circle1.getPerimeter();
+        circle1.getArea();
+        circle1.setFillColor();
+        circle1.setBorderColor();
+        circle1.printCalculations();
 
         System.out.println();
 
-        square1.mathCalculation();
-        square1.colors();
+        square1.getPerimeter();
+        square1.getArea();
+        square1.setFillColor();
+        square1.setBorderColor();
+        square1.printCalculations();
 
         System.out.println();
 
-        triangle1.mathCalculation();
-        triangle1.colors();
+        triangle1.getPerimeter();
+        triangle1.getArea();
+        triangle1.setFillColor();
+        triangle1.setBorderColor();
+        triangle1.printCalculations();
 
         System.out.println();
 
-        // Реализация квадрата через дефолтные методы интерфейса
-        square1.perimeterSquare();
-        square1.acreageSquare();
+        // Реализация цвета через дефолтные методы интерфейса
+        square1.fillColor("Красный");
+        square1.backgroundColor("Черный");
+        circle1.fillColor("Желтый");
+        circle1.backgroundColor("Пепельный");
+        triangle1.fillColor("Оранжевый");
+        triangle1.backgroundColor("Белый");
     }
 }

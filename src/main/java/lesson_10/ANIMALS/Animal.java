@@ -1,6 +1,6 @@
 package lesson_10.ANIMALS;
 
-public class Animal {
+public abstract class Animal {
     private boolean isFull;
     private static int animalCount = 0;
     String name;
@@ -31,7 +31,7 @@ public class Animal {
         } else if (mealAmount == desiredAmount) {
             isFull = true;
             System.out.println(name + " поел. В миске не осталось еды.");
-        }else {
+        } else {
             isFull = true;
             System.out.println(name + " поел. В миске осталось " + mealLeft + " единиц еды. ");
         }
