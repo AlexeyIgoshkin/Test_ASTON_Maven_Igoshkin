@@ -10,7 +10,6 @@ public class Main {
         System.out.println();
 
         // Вызов переопределенных методов интерфейса
-        // Расчеты в едином методе, цвета в едином методе
         circle1.getPerimeter();
         circle1.getArea();
         circle1.setFillColor();
