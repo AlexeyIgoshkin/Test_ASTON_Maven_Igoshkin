@@ -1,7 +1,7 @@
 package lesson_12;
 
 public class Main {
-    public static void main(String[] args) throws MyArraySizeException, MyArrayDataException {
+    public static void main(String[] args){
         // Создаем массивы
         String[][] array1 = {
                 {"15", "134", "42", "75"},

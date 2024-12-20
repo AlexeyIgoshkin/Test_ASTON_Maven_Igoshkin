@@ -1,7 +1,5 @@
 package lesson_12;
 
-import java.util.Arrays;
-
 public class ArrayValidation {
     // Создаем метод с проверками
     public static void arrayException(String[][] array) throws MyArraySizeException, MyArrayDataException {
