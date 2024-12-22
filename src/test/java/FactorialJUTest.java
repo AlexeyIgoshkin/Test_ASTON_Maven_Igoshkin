@@ -29,6 +29,7 @@ public class FactorialJUTest {
     public static void welcomeText() {
         System.out.println("Тесты начинаются");
     }
+
     @Tag("Factorial")
     @Test
     @DisplayName("Тест факториала из 0")
