@@ -1,13 +1,5 @@
-
-
-import org.testng.annotations.AfterGroups;
-import org.testng.annotations.BeforeGroups;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
+import org.testng.annotations.*;
 import static org.testng.Assert.assertEquals;
-
-
 
 public class FactorialNGTest {
     public static long factorialCalculation(int number) {
@@ -28,24 +20,27 @@ public class FactorialNGTest {
     }
 
     // ТЕСТЫ:
-    @BeforeGroups
+    @BeforeTest
     public static void welcomeText() {
         System.out.println("Тесты начинаются");
     }
 
+    // Тест факториала из нуля
     @Test (groups = {"Factorial"}, description = "Тест факториала из 0")
     public void zeroFactorialTest() {
         assertEquals(FactorialNGTest.factorialCalculation(0), 1, "Ошибка вычисления факториала из 0");
         System.out.println("Успешно. Факториал 0 равен 1");
     }
 
+    // Выключен. Все значения тестируются ниже через DataProvider
     @Test(enabled = false, description = "Тест некоторых значений")
     public void someArgumentsFactorialTest() {
-        assertEquals(FactorialNGTest.factorialCalculation(1), 1);
-        assertEquals(FactorialNGTest.factorialCalculation(5), 120);
+        assertEquals(FactorialNGTest.factorialCalculation(1), 1, "Ошибка вычисления факториала");
+        assertEquals(FactorialNGTest.factorialCalculation(5), 120, "Ошибка вычисления факториала");
         assertEquals(FactorialNGTest.factorialCalculation(10), 3628800, "Ошибка вычисления факториала");
     }
 
+    // Тесты на корректную обработку ошибок
     @Test (groups = {"Factorial"}, description = "Обработка ошибок недопустимых значений. 3 прогона.", invocationCount = 3)
     public void intLimitValuesFactorialTest() {
 
@@ -63,6 +58,7 @@ public class FactorialNGTest {
         System.out.println("Ошибка обработана верно. Число больше 20 для вычисления на long недопустимо.");
     }
 
+    //Данные для возможных корректных значений
     @DataProvider
     public Object [][] numbersData (){
         return new Object [][] {
@@ -88,13 +84,14 @@ public class FactorialNGTest {
                 {20, 2432902008176640000L}
         };
     }
+    //Метод проходит через все значения выше
     @Test (groups = {"Factorial"}, description = "Параметризованный тест для всех корректных значений факториала", dataProvider = "numbersData")
     public void allCorrectValuesOfFactorialTest(int number, long expected){
         assertEquals(factorialCalculation(number), expected, "Ошибка вычисления факториала для числа " + number);
         System.out.println("Число " + number + " успешно.");
     }
 
-    @AfterGroups
+    @AfterTest
         public static void byeText() {
         System.out.println("Тесты закончены");
     }
