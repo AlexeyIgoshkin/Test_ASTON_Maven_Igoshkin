@@ -93,6 +93,6 @@ public class FactorialNGTest {
 
     @AfterTest
         public static void byeText() {
-        System.out.println("Тесты закончены");
+            System.out.println("Тесты закончены");
     }
 }
