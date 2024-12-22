@@ -42,8 +42,8 @@ public class FactorialJUTest {
     @Disabled // Выключил. Ниже тесты всех этих значений через параметризацию
     @DisplayName("Тест некоторых значений")
     public void someArgumentsFactorialTest() {
-        assertEquals(1, FactorialJUTest.factorialCalculation(1));
-        assertEquals(120, FactorialJUTest.factorialCalculation(5));
+        assertEquals(1, FactorialJUTest.factorialCalculation(1), "Ошибка вычисления факториала");
+        assertEquals(120, FactorialJUTest.factorialCalculation(5), "Ошибка вычисления факториала");
         assertEquals(3628800, FactorialJUTest.factorialCalculation(10), "Ошибка вычисления факториала");
     }
 
