@@ -48,7 +48,7 @@ public class FactorialJUTest {
     }
 
     @Tag("Factorial")
-    @RepeatedTest(3) //Прогоняем 3 раза
+    @RepeatedTest(3) // Тестирование прогона
     @DisplayName("Обработка ошибок недопустимых значений. 3 прогона.")
     public void intLimitValuesFactorialTest() {
         assertEquals(2432902008176640000L, FactorialJUTest.factorialCalculation(20));
