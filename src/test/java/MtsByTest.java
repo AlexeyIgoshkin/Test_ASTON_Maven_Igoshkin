@@ -20,12 +20,12 @@ public class MtsByTest {
 
         // Поскольку сайт предлагает принять куки, которые могут не сохраняться, перед каждым тестом не лишним будет принять их, чтобы избежать ошибок, не связанных с шагами действий теста
         try {
-            WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(3));
+            WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(1));
             WebElement cookie = wait3.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#cookie-agree")));
             cookie.click();
-            System.out.println("Куки приняты");
+            System.out.println("Куки приняты\n");
         } catch (Exception e) {
-            System.out.println("Куки не появились");
+            System.out.println("Куки не появились\n");
         }
     }
 
@@ -121,18 +121,3 @@ public class MtsByTest {
         driver.quit();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
