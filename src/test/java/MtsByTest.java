@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -37,7 +35,6 @@ public class MtsByTest {
     @DisplayName("Заголовок модуля оплаты")
     public void h2 (){
         WebElement title = driver.findElement(By.xpath("//div[@class='col-12 col-xl-8']//h2[1]"));
-        title.getText();
         assertEquals("Онлайн пополнение\n" +"без комиссии", title.getText(), "Текст не совпал с ожидаемым");
         System.out.println("Проверка текста успешна");
     }
@@ -75,7 +72,6 @@ public class MtsByTest {
     @DisplayName("Подробнее о сервисе")
     public void serviceLink (){
         WebElement serviceLink = driver.findElement(By.xpath("//a[contains(text(),'Подробнее о сервисе')]"));
-        serviceLink.getText();
         assertEquals("Подробнее о сервисе", serviceLink.getText(), "Текст не совпадает с заявленным");
         System.out.println("Текст совпадает с заявленным");
         serviceLink.click();
