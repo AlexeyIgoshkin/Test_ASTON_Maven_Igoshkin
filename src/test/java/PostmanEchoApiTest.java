@@ -1,17 +1,18 @@
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.iterableWithSize;
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class PostmanEchoApiTest {
 
     String returnText = "This is expected to be sent back as part of response body.";
 
     @Test
+    @Order(1)
     @DisplayName("Запрос GET")
     public void getRequestTest () {
         given()
@@ -26,6 +27,7 @@ public class PostmanEchoApiTest {
     }
 
     @Test
+    @Order(2)
     @DisplayName("Запрос POST текста")
     public void postRawTextTest () {
         given()
@@ -40,6 +42,7 @@ public class PostmanEchoApiTest {
     }
 
     @Test
+    @Order(3)
     @DisplayName("Запрос POST данных")
     public void postFromDataTest () {
         HashMap<String, String> map = new HashMap<>();
@@ -60,6 +63,7 @@ public class PostmanEchoApiTest {
     }
 
     @Test
+    @Order(4)
     @DisplayName("Запрос PUT")
     public void putRequestTest () {
         given()
@@ -74,6 +78,7 @@ public class PostmanEchoApiTest {
     }
 
     @Test
+    @Order(5)
     @DisplayName("Запрос PATCH")
     public void patchRequestTest () {
         given()
@@ -88,6 +93,7 @@ public class PostmanEchoApiTest {
     }
 
     @Test
+    @Order(6)
     @DisplayName("Запрос DELETE")
     public void deleteRequestTest () {
         given()
@@ -100,8 +106,4 @@ public class PostmanEchoApiTest {
                 .body("data", equalTo(returnText))
                 .log().body();
     }
-
-
-
-
 }
