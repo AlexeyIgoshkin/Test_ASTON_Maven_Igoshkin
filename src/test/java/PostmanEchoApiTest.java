@@ -1,29 +1,45 @@
+import io.restassured.RestAssured;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.specification.ResponseSpecification;
+
 import org.junit.jupiter.api.*;
 
 import java.util.HashMap;
 
+import static io.restassured.RestAssured.expect;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.iterableWithSize;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class PostmanEchoApiTest {
-
+    // Создаем переменные и спецификации для псевдонимов
     String returnText = "This is expected to be sent back as part of response body.";
+    ResponseSpecification response200 = expect().statusCode(200);
+    ResponseSpecification responseData = expect().body("data", equalTo(returnText));
 
+    @BeforeEach
+    public void setupRest() {
+        //В каждом тесте указываем главную ссылку и логируем тело и статус ответа для удобства
+        RestAssured.baseURI = "https://postman-echo.com/";
+        RestAssured.filters(
+            new ResponseLoggingFilter(LogDetail.BODY),
+            new ResponseLoggingFilter(LogDetail.STATUS)
+        );
+    }
+
+    // 6 тестов API из PostmanEcho
     @Test
     @Order(1)
     @DisplayName("Запрос GET")
     public void getRequestTest () {
         given()
-                .baseUri("https://postman-echo.com/")
-                .when()
+        .when()
                 .get("get?foo1=bar1&foo2=bar2")
-                .then()
-                .statusCode(200)
+        .then()
+                .spec(response200)
                 .body("args.foo1", equalTo("bar1"))
-                .body("args.foo2", equalTo("bar2"))
-                .log().body();
+                .body("args.foo2", equalTo("bar2"));
     }
 
     @Test
@@ -31,14 +47,12 @@ public class PostmanEchoApiTest {
     @DisplayName("Запрос POST текста")
     public void postRawTextTest () {
         given()
-                .baseUri("https://postman-echo.com/")
                 .body(returnText)
-                .when()
+        .when()
                 .post("post")
-                .then()
-                .statusCode(200)
-                .body("data", equalTo(returnText))
-                .log().body();
+        .then()
+                .spec(response200)
+                .spec(responseData);
     }
 
     @Test
@@ -48,18 +62,15 @@ public class PostmanEchoApiTest {
         HashMap<String, String> map = new HashMap<>();
         map.put("foo1", "bar1");
         map.put("foo2", "bar2");
-
         given()
-                .baseUri("https://postman-echo.com/")
                 .header("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
                 .formParams(map)
-                .when()
+        .when()
                 .post("post")
-                .then()
-                .statusCode(200)
+        .then()
+                .spec(response200)
                 .body("form", equalTo(map))
-                .body("json", equalTo(map))
-                .log().body();
+                .body("json", equalTo(map));
     }
 
     @Test
@@ -67,14 +78,12 @@ public class PostmanEchoApiTest {
     @DisplayName("Запрос PUT")
     public void putRequestTest () {
         given()
-                .baseUri("https://postman-echo.com/")
                 .body(returnText)
-                .when()
+        .when()
                 .put("put")
-                .then()
-                .statusCode(200)
-                .body("data", equalTo(returnText))
-                .log().body();
+        .then()
+                .spec(response200)
+                .spec(responseData);
     }
 
     @Test
@@ -82,14 +91,12 @@ public class PostmanEchoApiTest {
     @DisplayName("Запрос PATCH")
     public void patchRequestTest () {
         given()
-                .baseUri("https://postman-echo.com/")
                 .body(returnText)
-                .when()
+        .when()
                 .patch("patch")
-                .then()
-                .statusCode(200)
-                .body("data", equalTo(returnText))
-                .log().body();
+        .then()
+                .spec(response200)
+                .spec(responseData);
     }
 
     @Test
@@ -97,13 +104,13 @@ public class PostmanEchoApiTest {
     @DisplayName("Запрос DELETE")
     public void deleteRequestTest () {
         given()
-                .baseUri("https://postman-echo.com/")
                 .body(returnText)
-                .when()
+        .when()
                 .delete("delete")
-                .then()
-                .statusCode(200)
-                .body("data", equalTo(returnText))
-                .log().body();
+        .then()
+                .spec(response200)
+                .spec(responseData);
     }
+
+    //Тесты завершены
 }
