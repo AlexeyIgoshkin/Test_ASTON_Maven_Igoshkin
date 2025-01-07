@@ -1,5 +1,8 @@
 package PageObject;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +36,7 @@ public class MtsByTest {
 
     @Test
     @Order(1)
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Главная: Заголовок модуля оплаты")
     public void testTitle() {
         assertEquals("Онлайн пополнение\nбез комиссии", mainPageLogin.getTitleText(), "Текст заголовка не совпадает");
@@ -40,6 +44,7 @@ public class MtsByTest {
 
     @Test
     @Order(2)
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Главная: Иконки оплаты")
     public void testLogos() {
         assertTrue(mainPageLogin.getElement(By.xpath("//img[contains(@src, 'visa') and @alt='Visa']")).isDisplayed(), "Логотип Visa не отображается");
@@ -51,11 +56,13 @@ public class MtsByTest {
 
     @Test
     @Order(3)
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("Главная: Подробнее о сервисе")
     public void testServiceLink() {
         assertEquals("Подробнее о сервисе", mainPageLogin.getServiceLink().getText(), "Текст ссылки не совпадает");
         mainPageLogin.getServiceLink().click();
         assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/", driver.getCurrentUrl(), "Открывшаяся ссылка не совпадает с ожидаемой");
+        ScreenshotMaker.makeScreenshot(driver, "Страница подробностей о сервисе.webp");
     }
 
 
@@ -63,6 +70,7 @@ public class MtsByTest {
 
     @Test
     @Order(4)
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Главная: Текст незаполненных полей \"Услуги связи\"")
     public void testFormText1() {
         //Следующая строчка закоментирована, поскольку мы сразу находимся на вкладке дропдауна "Услуги связи". Это может измениться в будущем, поэтому сохранено
@@ -75,6 +83,7 @@ public class MtsByTest {
 
     @Test
     @Order(5)
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Главная: Текст незаполненных полей \"Домашний интернет\"")
     public void testFormText2() {
         mainPageLogin.headerButton().click();
@@ -86,6 +95,7 @@ public class MtsByTest {
 
     @Test
     @Order(6)
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Главная: Текст незаполненных полей \"Задолженность\"")
     public void testFormText3() {
         mainPageLogin.headerButton().click();
@@ -97,6 +107,7 @@ public class MtsByTest {
 
     @Test
     @Order(7)
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Главная: Текст незаполненных полей \"Рассрочка\"")
     public void testFormText4() {
         mainPageLogin.headerButton().click();
@@ -108,6 +119,7 @@ public class MtsByTest {
 
     @Test
     @Order(8)
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Главная: Заполнение полей и кнопка \"Продолжить\"")
     public void testFormFill() {
         mainPageLogin.fillForm(phone, summ, email);
@@ -116,8 +128,10 @@ public class MtsByTest {
         assertTrue(mainPageLogin.getContinueButton().isDisplayed(), "Кнопка 'Продолжить' не отображается");
         mainPageLogin.getContinueButton().click();
         By iFrame = By.cssSelector(".bepaid-iframe");
+        ScreenshotMaker.makeScreenshot(driver, "Заполнение данных.webp");
         wait.until(ExpectedConditions.visibilityOfElementLocated(iFrame));
         driver.switchTo().frame(driver.findElement(iFrame));
+
     }
 
     /*
@@ -127,6 +141,7 @@ public class MtsByTest {
 
     @Test
     @Order(9)
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("iFrame оплаты. Тесты текста: незаполненных полей, суммы, номера")
     public void testFormText() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -139,6 +154,7 @@ public class MtsByTest {
         assertTrue(mainPageLogin.getFrameTitleSumText().contains(summ), "Сумма не соответствует заявленной:" + summ);
         assertTrue(mainPageLogin.getFrameButtonSumText().contains(summ), "Сумма не соответствует заявленной:" + summ);
         assertTrue(mainPageLogin.getFramePayDescriptionText().contains(phone), "Сумма не соответствует заявленной:" + phone);
+        ScreenshotMaker.makeScreenshot(driver, "Суммы заявки.webp");
 
         // Следующий метод проверяет надписи на всех полях сразу. Выбрал этот способ, так как его еще не реализовывал
         assertEquals("Номер карты\n" + "Срок действия\n" + "CVC\n" + "Имя держателя (как на карте)", mainPageLogin.getFrameCredentialsText(), "Надписи на полях не соответствуют заявленным");
@@ -146,7 +162,9 @@ public class MtsByTest {
     }
 
     @Test
+    @Epic("Какой-то эпик")
     @Order(10)
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("iFrame оплаты. Тесты наличия и отображения иконок")
     public void testFormLogos() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -162,6 +180,7 @@ public class MtsByTest {
         assertTrue(mainPageLogin.getElement(By.cssSelector("img[src='assets/images/payment-icons/card-types/mastercard-system.svg']")).isDisplayed(), "Логотип MasterCard не отображается");
         assertTrue(mainPageLogin.getElement(By.cssSelector("img[src='assets/images/payment-icons/card-types/belkart-system.svg']")).isDisplayed(), "Логотип Belkart не отображается");
         assertTrue(mainPageLogin.getElement(By.cssSelector("img[src='assets/images/payment-icons/card-types/maestro-system.svg']")).isDisplayed(), "Логотип Мир не отображается");
+        ScreenshotMaker.makeScreenshot(driver, "Логотипы оплаты в iFrame.webp");
         driver.switchTo().defaultContent();
     }
 
